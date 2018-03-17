@@ -19,6 +19,13 @@ namespace AutomatedUserExport.HelperClasses
 
 		public char Separator { set => separator = value; }
 		public string GetSecretValue(string key) => secretDetails[key];
+		
+		void SplitInto(StreamReader sr, out string key, out string value)
+		{
+			string[] row = sr.ReadLine().Split(',');
+			key = row[0];
+			value = row[1];
+		}
 
 		void ReadSecretDetails()
 		{
@@ -30,11 +37,8 @@ namespace AutomatedUserExport.HelperClasses
 					{
 						while (sr.Peek() >= 0)
 						{
-							string[] row = sr.ReadLine().Split(',');
-							string dataDenomination = row[0], dataValue = row[1];
-
-							secretDetails.Add(dataDenomination, dataValue);
-
+							SplitInto(sr, out string key, out string value);
+							secretDetails.Add(key, value);
 						}
 					}
 				}
