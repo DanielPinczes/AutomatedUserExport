@@ -22,7 +22,7 @@ namespace AutomatedUserExport.PageContents
 
 		IWebElement PasswordTxbx() => driver.FindElement(passwordTxbx);
 
-		IWebElement SubmitBtn () => driver.FindElement(submitBtn);
+		IWebElement SubmitBtn() => driver.FindElement(submitBtn);
 
 		void SetUserName() => UserNameTxbx().SendKeys(sdr.GetSecretValue("username"));
 
