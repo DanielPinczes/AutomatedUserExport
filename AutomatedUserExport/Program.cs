@@ -15,7 +15,13 @@ namespace AutomatedUserExport
 		 
 		static void Main(string[] args)
 		{
+			IWebDriver driver = new ChromeDriver();
+			SecretDetailsReader sdr = new SecretDetailsReader("PageDetails.csv");
+
+			LoginPage lp = new LoginPage { Driver = driver, Sdr = sdr };
+			lp.Login();
 			
+			driver.Quit();
 		}
 	}
 }
