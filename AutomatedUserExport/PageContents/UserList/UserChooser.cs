@@ -23,9 +23,7 @@ namespace AutomatedUserExport.PageContents.UserList
 
 		By UserFromTable(int rowNum, int colNum) => By.XPath(GetUserLinkXPath(rowNum, colNum));
 
-		IWebElement ChosenUser(int rowNum, int colNum) => driver.FindElement(UserFromTable(rowNum, colNum));
+		public IWebElement GetChosenUser(int rowNum, int colNum) => driver.FindElement(UserFromTable(rowNum, colNum));
 
-		public void OpenChosenUser(int rowNum, int colNum) => ChosenUser(rowNum, colNum).Click();
-		
 	}
 }

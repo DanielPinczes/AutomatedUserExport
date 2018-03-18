@@ -21,7 +21,7 @@ namespace AutomatedUserExport
 
 			LoginPage lp = new LoginPage { Driver = driver, Sdr = sdr };
 			lp.Login();
-			
+
 			driver.Quit();
 		}
 	}
