@@ -6,6 +6,7 @@ using OpenQA.Selenium.Chrome;
 using AutomatedUserExport.HelperClasses;
 using AutomatedUserExport.PageContents;
 
+using AutomatedUserExport.PageContents.UserList;
 
 
 namespace AutomatedUserExport
@@ -20,7 +21,7 @@ namespace AutomatedUserExport
 
 			LoginPage lp = new LoginPage { Driver = driver, Sdr = sdr };
 			lp.Login();
-
+			
 			driver.Quit();
 		}
 	}
