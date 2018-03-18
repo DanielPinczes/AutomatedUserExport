@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="HelperClasses\SecretDetailsReader.cs" />
     <Compile Include="PageContents\LoginPage.cs" />
+    <Compile Include="PageContents\UserList\UserChooser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

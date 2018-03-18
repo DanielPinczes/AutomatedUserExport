@@ -18,17 +18,17 @@ namespace AutomatedUserExport.PageContents
 		By passwordTxbx = By.CssSelector("input[name = pass]");
 		By submitBtn = By.CssSelector("input[name = submit]");
 
-		IWebElement UserNameTxbx() => driver.FindElement(userNameTxbx);
+		IWebElement UserNameTxbx => driver.FindElement(userNameTxbx);
 
-		IWebElement PasswordTxbx() => driver.FindElement(passwordTxbx);
+		IWebElement PasswordTxbx => driver.FindElement(passwordTxbx);
 
-		IWebElement SubmitBtn() => driver.FindElement(submitBtn);
+		IWebElement SubmitBtn => driver.FindElement(submitBtn);
 
-		void SetUserName() => UserNameTxbx().SendKeys(sdr.GetSecretValue("username"));
+		void SetUserName() => UserNameTxbx.SendKeys(sdr.GetSecretValue("username"));
 
-		void SetPassword() => PasswordTxbx().SendKeys(sdr.GetSecretValue("password"));
+		void SetPassword() => PasswordTxbx.SendKeys(sdr.GetSecretValue("password"));
 
-		void ClickSubmit() => SubmitBtn().Click();
+		void ClickSubmit() => SubmitBtn.Click();
 
 		public void Login()
 		{
