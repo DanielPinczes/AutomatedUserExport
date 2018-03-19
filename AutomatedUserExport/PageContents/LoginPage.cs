@@ -11,14 +11,17 @@ namespace AutomatedUserExport.PageContents
 		IWebDriver driver;
 		SecretDetailsReader sdr;
 
-		public IWebDriver Driver { set => driver = value; }
-		public SecretDetailsReader Sdr { set => sdr = value; }
-
 		By userNameTxbx = By.CssSelector("input[name = usrname]");
 		By passwordTxbx = By.CssSelector("input[name = pass]");
 		By submitBtn = By.CssSelector("input[name = submit]");
 
-		IWebElement UserNameTxbx => driver.FindElement(userNameTxbx);
+        public LoginPage(IWebDriver driver, SecretDetailsReader sdr)
+        {
+            this.driver = driver;
+            this.sdr = sdr;
+        }
+
+        IWebElement UserNameTxbx => driver.FindElement(userNameTxbx);
 
 		IWebElement PasswordTxbx => driver.FindElement(passwordTxbx);
 

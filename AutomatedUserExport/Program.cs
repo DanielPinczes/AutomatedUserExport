@@ -19,7 +19,7 @@ namespace AutomatedUserExport
 			IWebDriver driver = new ChromeDriver();
 			SecretDetailsReader sdr = new SecretDetailsReader("PageDetails.csv");
 
-			LoginPage lp = new LoginPage { Driver = driver, Sdr = sdr };
+            LoginPage lp = new LoginPage(driver, sdr);
 			lp.Login();
 
 			driver.Quit();
