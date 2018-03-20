@@ -8,15 +8,15 @@ namespace AutomatedUserExport.PageContents.UserList
 	{
 		IWebDriver driver;
 
-		public IWebDriver Driver { set => driver = value; }
+        public UserChooser(IWebDriver driver) => this.driver = driver;
 
-		string GetUserLinkXPath(int rowNum, int colNum)
+        string GetUserLinkXPath(int rowNum, int colNum)
 		{
 			string tab1Row = "//html//form[@name='adminForm']/table[1]/tbody[1]/tr";
 			string rowNumber = "[" + rowNum.ToString() + "]";
 			string tab1Dat = "/td";
 			string colNumber = "[" + colNum.ToString() + "]";
-			string elemLink = "/ a[@href]";
+			string elemLink = "/a[@href]";
 
 			return tab1Row + rowNumber + tab1Dat + colNumber + elemLink;
 		}

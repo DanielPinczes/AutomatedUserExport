@@ -3,44 +3,45 @@ using OpenQA.Selenium.Chrome;
 
 namespace AutomatedUserExport.PageContents.UserList
 {
-	class UserLimitSetter
-	{
+    class UserLimitSetter
+    {
 
-		IWebDriver driver;
-		public IWebDriver Driver { set => driver = value; }
+        IWebDriver driver;
 
-		string GetXPathDdlElem(int elemIndex)
-		{
-			string xPathName = ".//*[@name='limit']";
-			string xPathDdlElem = "/option[" + elemIndex.ToString() + "]";
+        public UserLimitSetter(IWebDriver driver) => this.driver = driver;
 
-			return xPathName + xPathDdlElem;
-		}
+        string GetXPathDdlElem(int elemIndex)
+        {
+            string xPathName = ".//*[@name='limit']";
+            string xPathDdlElem = "/option[" + elemIndex.ToString() + "]";
 
-		By GetLimElemByXpath(int elemIndex) => By.XPath(GetXPathDdlElem(elemIndex));
+            return xPathName + xPathDdlElem;
+        }
 
-		IWebElement GetLimElem(int elemIndex) => driver.FindElement(GetLimElemByXpath(elemIndex));
+        By GetLimElemByXpath(int elemIndex) => By.XPath(GetXPathDdlElem(elemIndex));
 
-		string GenNewLimJS(int newLimit)
-		{
-			string arguments = "arguments[0].";
-			string value = "value='" + newLimit.ToString() + "';";
+        IWebElement GetLimElem(int elemIndex) => driver.FindElement(GetLimElemByXpath(elemIndex));
 
-			return arguments + value;
-		}
+        string GenNewLimJS(int newLimit)
+        {
+            string arguments = "arguments[0].";
+            string value = "value='" + newLimit.ToString() + "';";
 
-		void ModLimElem(int DdlElemNum, int newLimVal)
-		{
-			IJavaScriptExecutor jsExecutor = driver as IJavaScriptExecutor;
+            return arguments + value;
+        }
 
-			jsExecutor.ExecuteScript(GenNewLimJS(newLimVal), GetLimElem(DdlElemNum));
-		}
+        void ModLimElem(int DdlElemNum, int newLimVal)
+        {
+            IJavaScriptExecutor jsExecutor = driver as IJavaScriptExecutor;
 
-		public void SetNewLimit(int DdlElemNum, int newLimVal)
-		{
-			ModLimElem(DdlElemNum, newLimVal);
+            jsExecutor.ExecuteScript(GenNewLimJS(newLimVal), GetLimElem(DdlElemNum));
+        }
 
-			GetLimElem(DdlElemNum).Click();
-		}
-	}
+        public void SetNewLimit(int DdlElemNum, int newLimVal)
+        {
+            ModLimElem(DdlElemNum, newLimVal);
+
+            GetLimElem(DdlElemNum).Click();
+        }
+    }
 }

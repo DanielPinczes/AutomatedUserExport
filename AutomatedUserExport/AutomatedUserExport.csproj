@@ -66,7 +66,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelperClasses\ExportFileWriter.cs" />
     <Compile Include="HelperClasses\SecretDetailsReader.cs" />
+    <Compile Include="PageContents\UserList\TabSwitcher.cs" />
     <Compile Include="PageContents\LoginPage.cs" />
     <Compile Include="PageContents\UserList\UserChooser.cs" />
     <Compile Include="PageContents\UserList\UserLimitSetter.cs" />
