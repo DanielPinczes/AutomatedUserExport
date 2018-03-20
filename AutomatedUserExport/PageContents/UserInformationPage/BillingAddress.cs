@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace AutomatedUserExport.PageContents.UserInformationPage
+namespace AutomatedUserExport.PageContents.UserInformation
 {
     partial class UserInformationPage
     {
@@ -21,7 +21,7 @@ namespace AutomatedUserExport.PageContents.UserInformationPage
 
         public string GetFirstName() => FirstnameInput.GetAttribute("value");
 
-        public string GetShopName() =>ShopnameInput.GetAttribute("value");
+        public string GetShopName() => ShopnameInput.GetAttribute("value");
 
         public string GetCompanyName() => CompanyInput.GetAttribute("value");
 

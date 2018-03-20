@@ -6,23 +6,25 @@ using OpenQA.Selenium.Chrome;
 using AutomatedUserExport.HelperClasses;
 using AutomatedUserExport.PageContents;
 
-using AutomatedUserExport.PageContents.HelpersOfUsersPage;
 
 
 namespace AutomatedUserExport
 {
-	class Program
-	{
-		 
-		static void Main(string[] args)
-		{
-			IWebDriver driver = new ChromeDriver();
-			SecretDetailsReader sdr = new SecretDetailsReader("PageDetails.csv");
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            IWebDriver driver = new ChromeDriver();
+            SecretDetailsReader sdr = new SecretDetailsReader("PageDetails.csv");
 
             LoginPage lp = new LoginPage(driver, sdr);
-			lp.Login();
+            lp.Login();
 
-			driver.Quit();
-		}
-	}
+            DataExporter exporter = new DataExporter(driver, sdr);
+            exporter.StartExport();
+
+            driver.Quit();
+        }
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace AutomatedUserExport.PageContents.HelpersOfUsersPage
+namespace AutomatedUserExport.PageContents.UsersPage_Operations
 {
     class UserLimitSetter
     {

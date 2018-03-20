@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 
 
-namespace AutomatedUserExport.PageContents.HelpersOfUsersPage
+namespace AutomatedUserExport.PageContents.UsersPage_Operations
 {
     class TabSwitcher
     {
@@ -10,7 +10,7 @@ namespace AutomatedUserExport.PageContents.HelpersOfUsersPage
 
         public TabSwitcher(IWebDriver driver) => this.driver = driver;
 
-        void SwitchTab(int tabNumber)
+        public void SwitchTab(int tabNumber)
         {
             IReadOnlyList<string> tabs = new List<string>(driver.WindowHandles);
             driver.SwitchTo().Window(tabs[tabNumber]);

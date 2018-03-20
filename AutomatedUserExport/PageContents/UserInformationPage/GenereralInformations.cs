@@ -1,17 +1,17 @@
 ﻿using OpenQA.Selenium;
 
-namespace AutomatedUserExport.PageContents.UserInformationPage
+namespace AutomatedUserExport.PageContents.UserInformation
 {
     partial class UserInformationPage
     {
-        IWebElement element;
         IWebDriver driver;
-        public IWebElement Element { set => element = value; }
-        public IWebDriver Driver { set => driver = value; }
 
         By usernameTxbx = By.XPath("//input[@class='inputbox'][@name='username']");
         By emailTxbx = By.XPath("//input[@class='inputbox'][@name='email']");
         By nextPageBtn = By.XPath("//a[text()='Számlázási cím']");
+
+        public UserInformationPage(IWebDriver driver) => this.driver = driver;
+
 
         IWebElement UsernameInput => driver.FindElement(usernameTxbx);
         IWebElement EmailInput => driver.FindElement(emailTxbx);
