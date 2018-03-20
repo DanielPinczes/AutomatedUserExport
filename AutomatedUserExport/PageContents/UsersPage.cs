@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
-using AutomatedUserExport.PageContents.UserList;
+using AutomatedUserExport.PageContents.HelpersOfUsersPage;
 using AutomatedUserExport.HelperClasses;
 
 namespace AutomatedUserExport.PageContents

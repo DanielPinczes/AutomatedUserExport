@@ -68,10 +68,12 @@
   <ItemGroup>
     <Compile Include="HelperClasses\ExportFileWriter.cs" />
     <Compile Include="HelperClasses\SecretDetailsReader.cs" />
-    <Compile Include="PageContents\UserList\TabSwitcher.cs" />
+    <Compile Include="PageContents\UserInformationPage\GenereralInformations.cs" />
+    <Compile Include="PageContents\UserInformationPage\BillingAddress.cs" />
+    <Compile Include="PageContents\HelpersOfUsersPage\TabSwitcher.cs" />
     <Compile Include="PageContents\LoginPage.cs" />
-    <Compile Include="PageContents\UserList\UserChooser.cs" />
-    <Compile Include="PageContents\UserList\UserLimitSetter.cs" />
+    <Compile Include="PageContents\HelpersOfUsersPage\UserChooser.cs" />
+    <Compile Include="PageContents\HelpersOfUsersPage\UserLimitSetter.cs" />
     <Compile Include="PageContents\UsersPage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

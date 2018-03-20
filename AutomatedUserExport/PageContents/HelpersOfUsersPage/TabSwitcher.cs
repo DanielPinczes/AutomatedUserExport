@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 
 
-namespace AutomatedUserExport.PageContents.UserList
+namespace AutomatedUserExport.PageContents.HelpersOfUsersPage
 {
     class TabSwitcher
     {

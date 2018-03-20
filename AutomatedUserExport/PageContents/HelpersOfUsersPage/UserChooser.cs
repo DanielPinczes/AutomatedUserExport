@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
 
-namespace AutomatedUserExport.PageContents.UserList
+namespace AutomatedUserExport.PageContents.HelpersOfUsersPage
 {
 	class UserChooser
 	{

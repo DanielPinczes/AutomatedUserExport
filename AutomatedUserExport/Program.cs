@@ -6,7 +6,7 @@ using OpenQA.Selenium.Chrome;
 using AutomatedUserExport.HelperClasses;
 using AutomatedUserExport.PageContents;
 
-using AutomatedUserExport.PageContents.UserList;
+using AutomatedUserExport.PageContents.HelpersOfUsersPage;
 
 
 namespace AutomatedUserExport
