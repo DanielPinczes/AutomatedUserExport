@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using AutomatedUserExport.PageContents.UsersPage_Operations;
 using AutomatedUserExport.HelperClasses;
-using AutomatedUserExport.PageContents.UserInformation;
+using AutomatedUserExport.PageContents.UsersPage_Operations;
 
 namespace AutomatedUserExport.PageContents
 {

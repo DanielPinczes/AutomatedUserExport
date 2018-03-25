@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using AutomatedUserExport.HelperClasses;
 using AutomatedUserExport.PageContents;
-using AutomatedUserExport.PageContents.UserInformation;
+using AutomatedUserExport.PageContents.UsersPage_Operations;
 
 namespace AutomatedUserExport
 {

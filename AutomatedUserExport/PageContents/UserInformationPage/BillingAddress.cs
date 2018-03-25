@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace AutomatedUserExport.PageContents.UserInformation
+namespace AutomatedUserExport.PageContents.UsersPage_Operations
 {
     partial class UserInformationPage
     {
