@@ -9,17 +9,17 @@ namespace AutomatedUserExport.HelperClasses
     class ExportFileWriter
     {
         string path = "Export.csv";
-        SecretDetailsReader sdr;
+        SecretDetailsReader fileHeader;
 
-        public ExportFileWriter(string path, SecretDetailsReader sdr)
+        public ExportFileWriter(string path)
         {
             this.path = path;
-            this.sdr = sdr;
+            this.fileHeader = new SecretDetailsReader("ExportedFileHeader.csv");
         }
 
         public void AddNewRecord(string record)
         {
-            if (!File.Exists(path)) WriteNewLine(sdr.GetSecretValue("exportFileHeader").Replace(';', ','));
+            if (!File.Exists(path)) WriteNewLine(fileHeader.AllValueInSeperatedLine);
             else WriteNewLine(record);
         }
         private void WriteNewLine(string record)

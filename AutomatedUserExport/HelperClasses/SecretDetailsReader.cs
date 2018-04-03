@@ -7,18 +7,15 @@ namespace AutomatedUserExport.HelperClasses
 	class SecretDetailsReader
 	{
 		string path;
-		char separator = ',';
+		string separator = ",";
 		Dictionary<string, string> secretDetails = new Dictionary<string, string>();
-		
-		public SecretDetailsReader(string path)
+
+        public SecretDetailsReader(string path)
 		{
 			this.path = path;
-
 			ReadSecretDetails();
 		}
 
-		public char Separator { set => separator = value; }
-		public string GetSecretValue(string key) => secretDetails[key];
 		
 		void SplitInto(StreamReader sr, out string key, out string value)
 		{
@@ -48,5 +45,11 @@ namespace AutomatedUserExport.HelperClasses
 				Console.WriteLine("The process failed: {0}", e.ToString());
 			}
 		}
-	}
+
+        public string Separator { set => separator = value; }
+        public string GetSecretValue(string key) => secretDetails[key];
+
+        public string AllValueInSeperatedLine => string.Join(separator, secretDetails.Values);
+
+    }
 }

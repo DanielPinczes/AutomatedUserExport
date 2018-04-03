@@ -28,7 +28,7 @@ namespace AutomatedUserExport
         {
             UserChooser userChooser = new UserChooser(webDriver);
             TabSwitcher tabControl = new TabSwitcher(webDriver);
-            ExportFileWriter export = new ExportFileWriter("Export.csv", secretDetailsOfPage);
+            ExportFileWriter export = new ExportFileWriter("Export.csv");
             UserInformationPage uip = new UserInformationPage(webDriver);
 
             for (int i = 2; i < up.UserCounter + 2; ++i)
@@ -42,21 +42,24 @@ namespace AutomatedUserExport
         }
         string GetRecord(UserInformationPage uip)
         {
-             string sep = ",", emptyValue = "";
+            string sep = ",", emptyValue = "";
 
-            string recordPage1 = uip.GetEmailTxbx() + sep +
-                                 uip.GetUserName() + sep;
+            string[] field = new string[9];
+
+            field[0] = uip.GetEmailTxbx();
+            field[3] = uip.GetUserName();
 
             uip.ScrollPage();
 
-            string recordPage2 = uip.GetLastName() + sep +
-                                 uip.GetFirstName() + sep +
-                                 uip.GetShopName() + sep +
-                                 uip.GetCompanyName() + sep +
-                                 uip.GetCity() + sep +
-                                 "regisztraltak";
+            field[1] = uip.GetLastName();
+            field[2] = uip.GetFirstName();
+            field[5] = uip.GetShopName();
+            field[4] = uip.GetCompanyName();
+            field[6] = uip.GetCity();
+            field[7] = emptyValue;
+            field[8] = "regisztraltak";
 
-            return recordPage1 + recordPage2;
+            return string.Join(sep, field);
         }
 
         void OpenUserInNewTab(UserChooser uc, int rowNum, int colNum)
