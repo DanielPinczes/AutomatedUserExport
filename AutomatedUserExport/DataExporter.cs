@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System.Collections.Generic;
+using OpenQA.Selenium;
 using AutomatedUserExport.HelperClasses;
 using AutomatedUserExport.PageContents;
 using AutomatedUserExport.PageContents.UsersPage_Operations;
@@ -7,42 +8,41 @@ namespace AutomatedUserExport
 {
     class DataExporter
     {
-        IWebDriver driver;
-        SecretDetailsReader sdr;
+        IWebDriver webDriver;
+        SecretDetailsReader secretDetailsOfPage;
 
-        public DataExporter(IWebDriver driver, SecretDetailsReader sdr)
+        public DataExporter(IWebDriver driver, SecretDetailsReader secretDetailsOfPage)
         {
-            this.driver = driver;
-            this.sdr = sdr;
+            this.webDriver = driver;
+            this.secretDetailsOfPage = secretDetailsOfPage;
         }
 
         public void StartExport()
         {
-            UsersPage up = new UsersPage(driver, sdr);
+            UsersPage up = new UsersPage(webDriver, secretDetailsOfPage);
             up.GoToURL();
             SetUsersLimit(2, 5);
             ExportAllUser(up);
         }
         void ExportAllUser(UsersPage up)
         {
-            UserChooser uc = new UserChooser(driver);
-            TabSwitcher tabControl = new TabSwitcher(driver);
-            ExportFileWriter export = new ExportFileWriter("Export.csv", sdr);
-            UserInformationPage uip = new UserInformationPage(driver);
+            UserChooser userChooser = new UserChooser(webDriver);
+            TabSwitcher tabControl = new TabSwitcher(webDriver);
+            ExportFileWriter export = new ExportFileWriter("Export.csv", secretDetailsOfPage);
+            UserInformationPage uip = new UserInformationPage(webDriver);
 
             for (int i = 2; i < up.UserCounter + 2; ++i)
             {
-                OpenUserInNewTab(uc, i, 3);
+                OpenUserInNewTab(userChooser, i, 3);
                 tabControl.SwitchTab(1);
                 export.AddNewRecord(GetRecord(uip));
-                driver.Close();
+                webDriver.Close();
                 tabControl.SwitchTab(0);
             }
         }
         string GetRecord(UserInformationPage uip)
         {
-
-            string sep = ",";
+             string sep = ",", emptyValue = "";
 
             string recordPage1 = uip.GetEmailTxbx() + sep +
                                  uip.GetUserName() + sep;
@@ -64,7 +64,7 @@ namespace AutomatedUserExport
 
         void SetUsersLimit(int ddlElemNum, int newLimVal)
         {
-            UserLimitSetter limSetter = new UserLimitSetter(driver);
+            UserLimitSetter limSetter = new UserLimitSetter(webDriver);
             limSetter.SetNewLimit(ddlElemNum, newLimVal);
         }
 

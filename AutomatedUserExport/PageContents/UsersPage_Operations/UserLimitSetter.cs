@@ -6,9 +6,9 @@ namespace AutomatedUserExport.PageContents.UsersPage_Operations
     class UserLimitSetter
     {
 
-        IWebDriver driver;
+        IWebDriver webDriver;
 
-        public UserLimitSetter(IWebDriver driver) => this.driver = driver;
+        public UserLimitSetter(IWebDriver driver) => this.webDriver = driver;
 
         string GetXPathDdlElem(int elemIndex)
         {
@@ -20,7 +20,7 @@ namespace AutomatedUserExport.PageContents.UsersPage_Operations
 
         By GetLimElemByXpath(int elemIndex) => By.XPath(GetXPathDdlElem(elemIndex));
 
-        IWebElement GetLimElem(int elemIndex) => driver.FindElement(GetLimElemByXpath(elemIndex));
+        IWebElement GetLimElem(int elemIndex) => webDriver.FindElement(GetLimElemByXpath(elemIndex));
 
         string GenNewLimJS(int newLimit)
         {
@@ -32,7 +32,7 @@ namespace AutomatedUserExport.PageContents.UsersPage_Operations
 
         void ModLimElem(int DdlElemNum, int newLimVal)
         {
-            IJavaScriptExecutor jsExecutor = driver as IJavaScriptExecutor;
+            IJavaScriptExecutor jsExecutor = webDriver as IJavaScriptExecutor;
 
             jsExecutor.ExecuteScript(GenNewLimJS(newLimVal), GetLimElem(DdlElemNum));
         }

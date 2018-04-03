@@ -8,8 +8,8 @@ namespace AutomatedUserExport.PageContents
 {
 	class LoginPage
 	{
-		IWebDriver driver;
-		SecretDetailsReader sdr;
+		IWebDriver webDriver;
+		SecretDetailsReader secretDetailsOfPage;
 
 		By userNameTxbx = By.CssSelector("input[name = usrname]");
 		By passwordTxbx = By.CssSelector("input[name = pass]");
@@ -17,25 +17,25 @@ namespace AutomatedUserExport.PageContents
 
         public LoginPage(IWebDriver driver, SecretDetailsReader sdr)
         {
-            this.driver = driver;
-            this.sdr = sdr;
+            this.webDriver = driver;
+            this.secretDetailsOfPage = sdr;
         }
 
-        IWebElement UserNameTxbx => driver.FindElement(userNameTxbx);
+        IWebElement UserNameTxbx => webDriver.FindElement(userNameTxbx);
 
-		IWebElement PasswordTxbx => driver.FindElement(passwordTxbx);
+		IWebElement PasswordTxbx => webDriver.FindElement(passwordTxbx);
 
-		IWebElement SubmitBtn => driver.FindElement(submitBtn);
+		IWebElement SubmitBtn => webDriver.FindElement(submitBtn);
 
-		void SetUserName() => UserNameTxbx.SendKeys(sdr.GetSecretValue("username"));
+		void SetUserName() => UserNameTxbx.SendKeys(secretDetailsOfPage.GetSecretValue("username"));
 
-		void SetPassword() => PasswordTxbx.SendKeys(sdr.GetSecretValue("password"));
+		void SetPassword() => PasswordTxbx.SendKeys(secretDetailsOfPage.GetSecretValue("password"));
 
 		void ClickSubmit() => SubmitBtn.Click();
 
 		public void Login()
 		{
-			driver.Navigate().GoToUrl(sdr.GetSecretValue("loginURL"));
+			webDriver.Navigate().GoToUrl(secretDetailsOfPage.GetSecretValue("loginURL"));
 			SetUserName();
 			SetPassword();
 			ClickSubmit();

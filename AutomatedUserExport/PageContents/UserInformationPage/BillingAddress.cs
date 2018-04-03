@@ -10,11 +10,11 @@ namespace AutomatedUserExport.PageContents.UsersPage_Operations
         By companyTxbx = By.XPath("//input[@name = 'company']");
         By cityTxbx = By.XPath("//input[@name = 'city']");
 
-        IWebElement LastnameInput => driver.FindElement(lastnameTxbx);
-        IWebElement FirstnameInput => driver.FindElement(firstnameTxbx);
-        IWebElement ShopnameInput => driver.FindElement(shopnameTxbx);
-        IWebElement CompanyInput => driver.FindElement(companyTxbx);
-        IWebElement CityInput => driver.FindElement(cityTxbx);
+        IWebElement LastnameInput => webDriver.FindElement(lastnameTxbx);
+        IWebElement FirstnameInput => webDriver.FindElement(firstnameTxbx);
+        IWebElement ShopnameInput => webDriver.FindElement(shopnameTxbx);
+        IWebElement CompanyInput => webDriver.FindElement(companyTxbx);
+        IWebElement CityInput => webDriver.FindElement(cityTxbx);
 
 
         public string GetLastName() => LastnameInput.GetAttribute("value");

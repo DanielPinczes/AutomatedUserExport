@@ -6,9 +6,9 @@ namespace AutomatedUserExport.PageContents.UsersPage_Operations
 {
 	class UserChooser
 	{
-		IWebDriver driver;
+		IWebDriver webDriver;
 
-        public UserChooser(IWebDriver driver) => this.driver = driver;
+        public UserChooser(IWebDriver driver) => this.webDriver = driver;
 
         string GetUserLinkXPath(int rowNum, int colNum)
 		{
@@ -23,7 +23,7 @@ namespace AutomatedUserExport.PageContents.UsersPage_Operations
 
 		By UserFromTable(int rowNum, int colNum) => By.XPath(GetUserLinkXPath(rowNum, colNum));
 
-		public IWebElement GetChosenUser(int rowNum, int colNum) => driver.FindElement(UserFromTable(rowNum, colNum));
+		public IWebElement GetChosenUser(int rowNum, int colNum) => webDriver.FindElement(UserFromTable(rowNum, colNum));
 
 	}
 }

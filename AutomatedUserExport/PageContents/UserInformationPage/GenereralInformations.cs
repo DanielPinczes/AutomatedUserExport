@@ -4,18 +4,18 @@ namespace AutomatedUserExport.PageContents.UsersPage_Operations
 {
     partial class UserInformationPage
     {
-        IWebDriver driver;
+        IWebDriver webDriver;
 
         By usernameTxbx = By.XPath("//input[@class='inputbox'][@name='username']");
         By emailTxbx = By.XPath("//input[@class='inputbox'][@name='email']");
         By nextPageBtn = By.XPath("//a[text()='Számlázási cím']");
 
-        public UserInformationPage(IWebDriver driver) => this.driver = driver;
+        public UserInformationPage(IWebDriver driver) => this.webDriver = driver;
 
 
-        IWebElement UsernameInput => driver.FindElement(usernameTxbx);
-        IWebElement EmailInput => driver.FindElement(emailTxbx);
-        IWebElement NextPageButton => driver.FindElement(nextPageBtn);
+        IWebElement UsernameInput => webDriver.FindElement(usernameTxbx);
+        IWebElement EmailInput => webDriver.FindElement(emailTxbx);
+        IWebElement NextPageButton => webDriver.FindElement(nextPageBtn);
 
 
         public string GetUserName() => UsernameInput.GetAttribute("value");

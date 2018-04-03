@@ -15,16 +15,16 @@ namespace AutomatedUserExport
 
         static void Main(string[] args)
         {
-            IWebDriver driver = new ChromeDriver();
-            SecretDetailsReader sdr = new SecretDetailsReader("PageDetails.csv");
+            IWebDriver webDriver = new ChromeDriver();
+            SecretDetailsReader secretDetailsOfPage = new SecretDetailsReader("PageDetails.csv");
 
-            LoginPage lp = new LoginPage(driver, sdr);
+            LoginPage lp = new LoginPage(webDriver, secretDetailsOfPage);
             lp.Login();
 
-            DataExporter exporter = new DataExporter(driver, sdr);
+            DataExporter exporter = new DataExporter(webDriver, secretDetailsOfPage);
             exporter.StartExport();
 
-            driver.Quit();
+            webDriver.Quit();
         }
     }
 }

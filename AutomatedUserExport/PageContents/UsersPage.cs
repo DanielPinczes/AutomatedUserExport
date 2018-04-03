@@ -8,25 +8,25 @@ namespace AutomatedUserExport.PageContents
 {
     class UsersPage
     {
-        IWebDriver driver;
-        SecretDetailsReader sdr;
+        IWebDriver webDriver;
+        SecretDetailsReader secretDetailsOfPage;
     
         By evenUser = By.CssSelector("tr[class = row0]");
         By oddUser = By.CssSelector("tr[class = row1]");
 
-        public UsersPage(IWebDriver driver, SecretDetailsReader sdr)
+        public UsersPage(IWebDriver driver, SecretDetailsReader secretDetailsOfPage)
         {
-            this.driver = driver;
-            this.sdr = sdr;
+            this.webDriver = driver;
+            this.secretDetailsOfPage = secretDetailsOfPage;
         }
 
-        IReadOnlyCollection<IWebElement> EvenUsers => driver.FindElements(evenUser);
+        IReadOnlyCollection<IWebElement> EvenUsers => webDriver.FindElements(evenUser);
 
-        IReadOnlyCollection<IWebElement> OddUsers => driver.FindElements(oddUser);
+        IReadOnlyCollection<IWebElement> OddUsers => webDriver.FindElements(oddUser);
 
         public int UserCounter => OddUsers.Count + EvenUsers.Count;
         
-        public void GoToURL() => driver.Navigate().GoToUrl(sdr.GetSecretValue("userListURL"));
+        public void GoToURL() => webDriver.Navigate().GoToUrl(secretDetailsOfPage.GetSecretValue("userListURL"));
 
   
     }

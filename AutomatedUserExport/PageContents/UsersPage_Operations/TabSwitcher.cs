@@ -6,14 +6,14 @@ namespace AutomatedUserExport.PageContents.UsersPage_Operations
 {
     class TabSwitcher
     {
-        IWebDriver driver;
+        IWebDriver webDriver;
 
-        public TabSwitcher(IWebDriver driver) => this.driver = driver;
+        public TabSwitcher(IWebDriver driver) => this.webDriver = driver;
 
         public void SwitchTab(int tabNumber)
         {
-            IReadOnlyList<string> tabs = new List<string>(driver.WindowHandles);
-            driver.SwitchTo().Window(tabs[tabNumber]);
+            IReadOnlyList<string> tabs = new List<string>(webDriver.WindowHandles);
+            webDriver.SwitchTo().Window(tabs[tabNumber]);
         }
     }
 }
